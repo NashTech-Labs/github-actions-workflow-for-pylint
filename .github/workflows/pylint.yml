@@ -1,0 +1,18 @@
+name: Pylint
+on:
+  push:
+  pull_request:
+
+jobs:
+  pylint:
+    name: Custom check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Install pylint
+        run: pip install pylint
+      - name: Your custom check name
+        run: pylint --disable=all --enable=rule-name folder-to-lint
